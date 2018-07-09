@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let arr = [
+        {
+            className:'热门歌手'
+        },
+        {
+            className:'华语男'
+        },
+        {
+            className:'华语女'
+        },
+        {
+            className:'华语组合'
+        }
+        ,
+        {
+            className:'日韩男歌手'
+        },
+        {
+            className:'日韩女歌手'
+        },
+        {
+            className:'日韩组合'
+        }
+    ];
+
+    let obj = {};
+    arr.forEach(e=>{
+        let name = e.className.substr(0,2);
+        if(!obj[name]){
+            obj[name] = [];
+        }
+        obj[name].push(e);
+    });
+    console.log(obj);
+
+
+</script>
+</body>
+</html>
