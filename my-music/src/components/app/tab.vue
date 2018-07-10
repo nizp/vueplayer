@@ -1,6 +1,6 @@
 <template>
     <mu-tabs 
-        :value.sync="active1" 
+        :value="active" 
         inverse 
         text-color="#000" 
         center
@@ -12,15 +12,25 @@
         <mu-tab to="/rank">排行</mu-tab>
         <mu-tab to="/plist">歌单</mu-tab>
         <mu-tab to="/singer">歌手</mu-tab>
+        
     </mu-tabs>
 </template>
 
 <script>
 export default {
     name:"Tab",
-    data(){
-        return {
-            active1:0
+    computed:{
+        active(){
+            switch(this.$route.path){
+                case '/':
+                    return 0
+                case '/rank':
+                    return 1
+                case '/plist':
+                    return 2
+                case '/singer':
+                    return 3
+            }
         }
     }
 }

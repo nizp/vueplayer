@@ -36,6 +36,9 @@
 import {songpage as data} from '../../json.js';
     export default {
         name:'Plist',
+        created(){
+            this.$store.commit('pboff');
+        },
         data(){
             return {
                 list:[]

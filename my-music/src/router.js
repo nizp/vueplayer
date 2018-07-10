@@ -4,6 +4,8 @@ import Index from './components/index';
 import Rank from './components/rank';
 import Plist from './components/plist';
 import Singer from './components/singer';
+import Info from './components/rank/info.vue';
+
 Vue.use(Router)
 
 export default new Router({
@@ -28,6 +30,12 @@ export default new Router({
       path: '/singer',
       name: 'Singer',
       component: Singer
+    },
+    {
+      path: '/rank/info/:id',
+      name: 'Info',
+      component: Info,
     }
+    
   ]
 })

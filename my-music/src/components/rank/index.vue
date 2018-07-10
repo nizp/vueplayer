@@ -2,25 +2,30 @@
     <div id="rank">
         <mu-paper :z-depth="1" class="demo-loadmore-wrap">
         <mu-list>
-            <mu-list-item
-                avatar 
-                button 
-                :ripple="true"
+            <router-link 
                 v-for="val in list"
+                :to="{'path':'/rank/info/'+val.rankid}"
             >
-                <mu-list-item-action>
-                    <mu-avatar size="100">
-                        <img :src="val.imgurl.replace(/{size}/,'')">
-                    </mu-avatar>
-                </mu-list-item-action>
-                <mu-list-item-title>{{val.rankname}}</mu-list-item-title>
-                <mu-list-item-action>
-                    <mu-icon 
-                        value="chevron_right"
-                        size="45"
-                    ></mu-icon>
-                </mu-list-item-action>
-            </mu-list-item>
+                <mu-list-item 
+                    avatar 
+                    button 
+                    :ripple="true"
+                    
+                >
+                    <mu-list-item-action>
+                        <mu-avatar size="100">
+                            <img :src="val.imgurl.replace(/{size}/,'')">
+                        </mu-avatar>
+                    </mu-list-item-action>
+                    <mu-list-item-title>{{val.rankname}}</mu-list-item-title>
+                    <mu-list-item-action>
+                        <mu-icon 
+                            value="chevron_right"
+                            size="45"
+                        ></mu-icon>
+                    </mu-list-item-action>
+                </mu-list-item>
+            </router-link>
         </mu-list>
         </mu-paper>
     </div>
@@ -34,10 +39,12 @@ import {list as data} from '../../json.js';
                 list:[]
             }
         },
-       async mounted(){
+        created(){
+            this.$store.commit('pboff');
+        },
+        async mounted(){
             //await async
             let d = await data.rank.list;
-          
             this.list.push(...d);
         }
     }
