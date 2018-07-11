@@ -1,4 +1,4 @@
-http://m.kugou.com/
+http://m.kugou.com//plist/index&json=true
 
 [1]:首页列表
 ?json=true
@@ -14,7 +14,7 @@ playcount:num 多少人听过
 
 [3]:听歌
 
-/app/i/getSongInfo.php?cmd=playInfo&hash='D8512CD5CAB8F9A7E30523CA76A783F9’
+/app/i/getSongInfo.php?cmd=playInfo&hash='382656E087183CE4E605A7ED4B820419’
 
 -------------------------------------
 [4]:排行榜
@@ -48,7 +48,7 @@ http://mobilecdn.kugou.com/api/v3/search/hot?format=jsonp&plat=0&count=30&callba
 
 
 [10]:
-http://mobilecdn.kugou.com/api/v3/search/song?薛之谦format=jsonp&keyword=&page=1&pagesize=30&showtype=1&callback=kgJSONP705177034
+http://mobilecdn.kugou.com/api/v3/search/song?format=jsonp&keyword=薛之谦&page=1&pagesize=30&showtype=1&callback=kgJSONP705177034
 
 
 

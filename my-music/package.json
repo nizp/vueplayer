@@ -20,6 +20,7 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.0-beta.15",
     "@vue/cli-service": "^3.0.0-beta.15",
+    "fetch-jsonp": "^1.1.3",
     "vue-template-compiler": "^2.5.16"
   },
   "postcss": {

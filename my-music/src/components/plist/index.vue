@@ -2,11 +2,15 @@
     <div id="plist">
         <mu-paper :z-depth="1" class="demo-loadmore-wrap">
         <mu-list>
+            <router-link 
+                :to="{'path':`/plist/list/${key}`}"
+                v-for="val,key in list"
+            >
             <mu-list-item
                 avatar 
                 button 
                 :ripple="true"
-                v-for="val in list"
+                
             >
                 <mu-list-item-action>
                     <mu-avatar size="100">
@@ -28,6 +32,7 @@
                     <span>{{val.playcount}}</span>
                 </div>
             </mu-list-item>
+            </router-link>
         </mu-list>
         </mu-paper>
     </div>
@@ -47,7 +52,7 @@ import {songpage as data} from '../../json.js';
        async mounted(){
             //await async
             let d = await data.plist.list.info;
-          
+            console.log(d);
             this.list.push(...d);
         }
     }

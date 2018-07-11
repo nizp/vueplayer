@@ -1,9 +1,9 @@
 <template>
-    <div id="info">
+    <div id="pl">
         <mu-paper :z-depth="1" class="demo-loadmore-wrap">
             
             <mu-list textline="three-line">
-                <mu-card-media :title="img.rankname" sub-title="Image Sub Title">
+                <mu-card-media :title="title" sub-title="Image Sub Title">
                     <router-link to="/rank">
                         <mu-icon 
                             value="keyboard_arrow_left" 
@@ -11,7 +11,7 @@
                             size="50" color="#fff">
                         </mu-icon>
                     </router-link>
-                    <img :src="img.imgurl?img.imgurl.replace(/{size}/,''):''">
+                    <img :src="img">
                 </mu-card-media>
                 <mu-list-item 
                     button 
@@ -31,23 +31,25 @@
     </div>
 </template>
 <script>
-import axios from 'axios';
-import {info} from '../../json.js';
+import {songpage} from '../../json.js';
 export default {
-    name:"Info",
+    name:"Pl",
     data(){
         return {
             list:[],
-            img:''
+            img:'',
+            title:''
         }
     },
   async  mounted() {
-        let id = this.$route.params.id || '666';
+        let id = this.$route.params.id || 0;
         // let d = await axios.get('/api/rank/info/&json=true?rankid='+id)
-        let d = info;
-        // this.list = d.data.songs.list;
-        this.list = d.songs.list;
-        this.img = d.info;
+        let d = songpage.plist.list.info[id*1];
+
+        this.list = d.songs;
+        // this.list = d.songs.list;
+        this.img = d.imgurl.replace(/{size}/,'');
+        this.title = d.specialname;
         // this.img = d.data.info;
         console.log(d)
     }
@@ -58,10 +60,8 @@ export default {
 .d{
     padding-top:4.5rem; 
 }
-#info .mu-card-media{
 
-}
-#info .demo-loadmore-wrap {
+#pl .demo-loadmore-wrap {
   width: 100%;
   height:40.3rem;
   display: flex;
@@ -70,28 +70,34 @@ export default {
 .gun{
     position: absolute;
 }
-#info .demo-loadmore-wrap .mu-appbar {
+#pl .demo-loadmore-wrap .mu-appbar {
     width: 100%;
 }
-#info .mu-list{
+#pl .mu-list{
     padding: 10px;
 }
-#info .mu-item-title{
+#pl .mu-item-title{
     float: left;
     width:90%;
     font-size:1.2rem;
 }
-#info .mu-item-action{
+#pl .mu-item-action{
     float: right;
     max-width:none;
     min-width:0 !important;
 }
-#info .mu-card-media img{
-    width:22.2rem;
-    height: 16rem;
-    border: none;
+#pl .mu-card-media{
+    overflow: hidden;
+    height: 14rem;
 }
-#info .mu-list li{
+#pl .mu-card-media img{
+    width:22.2rem;
+    margin-top:-2rem;
+}
+#pl .mu-list li{
     border-bottom: 1px solid #ccc;
+}
+#pl .mu-card-media-title .mu-card-title{
+    font-size:20px;
 }
 </style>

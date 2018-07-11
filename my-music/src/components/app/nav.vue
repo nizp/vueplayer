@@ -3,7 +3,13 @@
         <h1 id="logo">
             <img src="../../assets/images/logo.png" alt="">
         </h1>
-        <mu-icon class="search" value="search" size="30"></mu-icon>
+        <router-link to="/search" tag="i">
+            <mu-icon 
+                class="search" 
+                value="search" 
+                size="30"
+            ></mu-icon>
+        </router-link>
     </mu-appbar>
 </template>
 

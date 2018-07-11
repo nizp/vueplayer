@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Nav></Nav>
-    <Tab></Tab>
+    <Tab v-show="toggleTab"></Tab>
     <Pb />
     <router-view/>
   </div>
@@ -16,7 +16,16 @@ export default {
     Nav,
     Tab,
     Pb
+  },
+  computed:{
+    toggleTab(){
+      let arr = ['/rank/info/','plist/list/','/search']; 
+      let path = this.$route.path; 
+      let re = new RegExp(arr.join('|'));
+      return !re.test(path);
+    }
   }
+
 }
 </script>
 

@@ -5,6 +5,9 @@ import Rank from './components/rank';
 import Plist from './components/plist';
 import Singer from './components/singer';
 import Info from './components/rank/info.vue';
+import Pl from './components/plist/list.vue';
+import Search from './components/search';
+import SearchList from './components/search/list.vue';
 
 Vue.use(Router)
 
@@ -27,6 +30,11 @@ export default new Router({
       component: Plist
     },
     {
+      path: '/plist/list/:id',
+      name: 'Pl',
+      component: Pl
+    },
+    {
       path: '/singer',
       name: 'Singer',
       component: Singer
@@ -35,6 +43,16 @@ export default new Router({
       path: '/rank/info/:id',
       name: 'Info',
       component: Info,
+    },
+    {
+      path: '/search',
+      name: 'Search',
+      component: Search,
+    },
+    {
+      path: '/search/list/:name',
+      name: 'SearchList',
+      component: SearchList,
     }
     
   ]
