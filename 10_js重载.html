@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        通过不同的参数运行函数，结果是不一样的
+
+        push('123')
+        push(5)
+
+        /get?user=xxx    [xxx]
+
+        /get?user=<script src="xx.js">/script      [<script src="xx.js">/script]
+
+    */
+
+    // function fn(){
+    //     switch(arguments.length){
+    //         case 0:
+    //             break;
+    //         case 1:
+    //             break;
+    //     }
+    // }
+
+    // fn(1,2)
+
+    /*
+        不传参的时候返回整个数组
+        当传一个参数时,就把first-name跟这个参数匹配的元素返回来
+        当传两个参数时，则把first-name和last-name都匹配的才返回来
+
+    */
+    var people = {
+        values: ["Dean Edwards", "Sam Stephenson", "Alex Russell", "Dean Tom"]
+    };
+
+    function addMethod(obj,name,fn){
+        //people['find']('Dean','Edwards')
+        let old = obj[name]; //要调用对象上的方法，所以给这个对象绑定方法
+        
+        obj[name] = function(){
+            /*
+                fn.length
+                    addMethod(fn)的length
+
+                arguments.length
+                    people['find']()的length
+            */
+            // if(fn.length === arguments.length){
+            //     return fn.apply(this,arguments);
+            // }
+            // console.log('进来')
+            return typeof fn==='function' && fn.apply(this,arguments);
+        }
+        
+    }
+    addMethod(people, "find",function(){
+        return people['values'];
+    }); /*不传参*/
+    addMethod(people, "find", function(a) {
+        let arr = people['values'];
+        let re = new RegExp(('\\b')+a+('\\b'));
+        let e = arr.find((e)=>{
+            if(re.test(e)){
+                return e;
+            }
+        });
+        if(!e){
+            return null;
+        }
+        return e;
+    }); /*传一个*/
+
+    addMethod(people, "find", function(a, b) {
+        let arr = people['values'];
+        let str = '';
+        arr.forEach(e=>{
+            let arr2 = e.split(' ');
+            if(arr2[0]==a && arr2[1] == b){
+                str = e;
+            }
+        })
+        if(!str){
+            return null;
+        }
+        return str;
+
+    }); /*传两个*/
+
+    // console.log(people.find('Dean'));//所有的数组
+     
+    console.log(people.find('Sam','Stephenson'));
+
+    // function fn(a,b,c,d){
+
+    // }
+    // console.dir(fn)
+</script>
+</body>
+</html>

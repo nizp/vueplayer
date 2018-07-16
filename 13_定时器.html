@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    
+    /*
+        内部使用了eval，会引发内存泄露
+    */
+    setTimeout('fn()',1000);
+
+    function fn(){
+        console.log(1);
+    }
+
+</script>
+</body>
+</html>

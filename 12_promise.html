@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    let a = 20;
+    // let p = new Promise(function(resolve,reject){
+    //     setTimeout(function(){
+    //         a = 10;
+    //         resolve(a);
+    //     },1000);
+    // })
+
+    // p.then(function(a){
+    //     console.log(a)
+    // });
+
+    // alert(a);
+
+    class Mypromise {
+        constructor(fn){
+            this.fn = fn;
+            this.state = 'PENDING';
+            this.headers = [];
+            fn(this.resolve.bind(this),this.reject);
+            this.timer = null;
+        }
+        resolve(a){
+          if(this.state == 'PENDING'){
+            this.state = 'resolve';
+          }
+          this.headers.push(a);
+          
+        }
+        reject(){
+
+        }
+        then(a,b){
+            this.timer = setInterval(()=>{
+                console.log(this.state)
+                if(this.state === 'resolve'){
+                    clearInterval(this.timer);
+                    this.headers.forEach((e)=>{
+                        a(e);
+                    })
+                }
+            },50);
+        }
+    }
+
+    let aa = 20;
+    let p = new Mypromise(function(resolve,b){
+        setTimeout(function(){
+            aa = 10;
+            resolve(aa);
+            // console.log(p.state)
+        },1000);
+    });
+
+    p.then(function(a){
+        console.log(a);
+    });
+
+
+
+
+   
+</script>
+</body>
+</html>

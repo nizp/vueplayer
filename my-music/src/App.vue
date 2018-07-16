@@ -19,7 +19,7 @@ export default {
   },
   computed:{
     toggleTab(){
-      let arr = ['/rank/info/','plist/list/','/search']; 
+      let arr = ['/rank/info/','plist/list/','/search','/songing']; 
       let path = this.$route.path; 
       let re = new RegExp(arr.join('|'));
       return !re.test(path);

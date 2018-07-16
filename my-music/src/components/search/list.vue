@@ -44,7 +44,6 @@
 
 <script>
 import jsonp from 'fetch-jsonp';
-
 export default {
     name:'SearchList',
      created(){

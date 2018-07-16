@@ -8,7 +8,8 @@ import Info from './components/rank/info.vue';
 import Pl from './components/plist/list.vue';
 import Search from './components/search';
 import SearchList from './components/search/list.vue';
-
+import Songing from './components/app/songing.vue';
+import Ceshi from './views/About.vue';
 Vue.use(Router)
 
 export default new Router({
@@ -53,6 +54,15 @@ export default new Router({
       path: '/search/list/:name',
       name: 'SearchList',
       component: SearchList,
+    },
+    {
+      path: '/ceshi',
+      name: 'ceshi',
+      component: Ceshi,
+    },
+    {
+     path:'/songing',
+     component : Songing
     }
     
   ]

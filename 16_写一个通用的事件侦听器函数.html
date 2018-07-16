@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        写一个通用的事件侦听器函数
+
+        addEventListener 高版本
+        attachEvent  低版本IE
+    */
+
+    function addEvent(obj,evName,callback){
+        if(obj.addEventListener){
+            //高版本
+            obj.addEventListener(evName,callback);
+        }else{
+            //低版本IE
+            window[callback] = function(){
+                callback.call(obj);
+            } 
+            obj.attachEvent('on'+evName,window[callback]); 
+             
+        }
+    }
+
+    function removeEvent(obj,evName,callback){
+        if(obj.removeEventListener){
+            //高版本
+            obj.removeEventListener(evName,callback);
+        }else{
+            //低版本IE
+            obj.detachEvent('on'+evName,window[callback]);   
+        }
+    }
+
+    addEvent(document,'click',fn);
+
+    function fn(){
+        console.log(this.nodeName);
+        removeEvent(document,'click',fn);
+    }
+
+    // document.attachEvent('onclick',function(){
+    //     alert(1);
+    // })
+</script>
+</body>
+</html>

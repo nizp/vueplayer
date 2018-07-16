@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        onload与DOMConentLoaded区别
+
+        onload是页面中所有静态资源加载完成之后执行
+            src
+        DOMConentLoaded是DOM加载完成之后执行
+
+        低版本：
+            onreadystatechange
+            document.documentElement.doScroll('left')
+            用try{}cach(){}
+
+    */
+
+    document.addEventListener('DOMContentLoaded',function(){
+        alert(1);
+    });
+
+
+
+
+</script>
+</body>
+</html>

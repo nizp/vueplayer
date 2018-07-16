@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        介绍js有哪些内置对象？
+        Object 是 JavaScript 中所有对象的父对象
+        数据封装类对象：
+           Function、Object、Array、Boolean、Number 和 String
+        其他对象：
+            Arguments、Math、Date、RegExp、Error
+
+
+        本地对象:
+            在系统中可以new的实例化对象 
+                Object、Array....
+        内置对象:
+            Math等不可以实例化的对象
+
+        宿主对象:(浏览器带的)
+            window,document
+
+
+    */
+
+    // var fn = function() {
+	//     this.name = 'nizp';
+	// };
+	// fn.prototype.sayname = function(){
+	//    alert(this.name) //''
+	// }
+	// fn.prototype.waitsay = function(){
+	//     setTimeout(this.sayname);
+	// }
+	// var a = new fn();
+	// a.waitsay();
+
+    var obj={
+		name:"as",
+		get:function(){
+			return function(){
+                return this.name;
+            }
+		}
+	};
+	var newObj = obj.get();
+	console.log(newObj());
+</script>
+</body>
+</html>

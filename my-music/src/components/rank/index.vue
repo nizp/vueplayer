@@ -9,7 +9,7 @@
                 <mu-list-item 
                     avatar 
                     button 
-                    :ripple="true"
+                    :ripple="false"
                     
                 >
                     <mu-list-item-action>
@@ -26,7 +26,9 @@
                     </mu-list-item-action>
                 </mu-list-item>
             </router-link>
+            <div class="d"></div>
         </mu-list>
+        
         </mu-paper>
     </div>
 </template>
@@ -64,7 +66,7 @@ import {list as data} from '../../json.js';
     border-radius:0;
 }
 #rank li{
-    height: 7.5rem;
+    height: 9.5rem;
     border-bottom: 1px solid #ccc;
 }
 #rank .mu-item-action{

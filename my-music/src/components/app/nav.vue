@@ -1,5 +1,5 @@
 <template>
-    <mu-appbar style="width: 100%;" color="primary">
+    <mu-appbar style="width: 100%;" class="nav" color="primary">
         <h1 id="logo">
             <img src="../../assets/images/logo.png" alt="">
         </h1>
@@ -20,6 +20,9 @@
 </script>
 
 <style>
+.nav{
+    position: relative;
+}
 #logo{
     float: left;
 }

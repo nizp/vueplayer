@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        原型、原型链,有什么特点
+
+            原型:
+                当一个函数被创建的时候，自身带有的属性，值为对象
+
+                解决性能问题的
+
+            原型链:
+                对象才有的属性
+
+            实例化对象的原型链 === 构造函数的原型
+
+
+            实例化对象.原型链.原型链 = 某个父类的构造函数的原型
+
+           children.prototype = Object.create(parent.prototype)
+
+            
+
+    */
+
+    function Fn2(){}
+
+    Object.defineProperties(Fn2.prototype,{
+        aaa:{
+            value:10
+        }
+    })
+    // Fn2.prototype.aa = 10;
+
+    function Fn(){
+        // this.say = function(){
+        //     alert('123');
+        // }
+    }
+    Fn.prototype.say = function(){
+        alert('123');
+    }
+
+    Fn.prototype = Object.create(Fn2.prototype,{
+        constructor:{
+            value:Fn
+        },
+        aaa:{
+            value:5
+        }
+    });
+
+    // Fn.prototype.aaa = 5; 
+
+
+    //  console.log(Object.create(Fn2.prototype))
+
+    let f = new Fn;
+    let f2 = new Fn;
+    let ff = new Fn2;
+
+    // f.say();
+    // f2.say();
+
+    // console.log(f.say == f2.say);
+    // console.dir(f instanceof Fn2);
+
+    // console.log(f.aaa);
+    // console.log(ff.aaa);
+
+    console.dir(f.constructor);
+
+</script>
+</body>
+</html>

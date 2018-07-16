@@ -1,14 +1,16 @@
 <template>
     <div id="pb" :style="{bottom:onOff}">
-        <div class="ft-left">
-			<img 
-                :src="pbhash.imgUrl?pbhash.imgUrl.replace(/{size}/,''):''" 
-                onerror="this.onerror=null;this.src='http://m.kugou.com/v3/static/images/index/logo_kugou.png';" 
-                alt="" 
-                class="js-ftImg" 
-                id="ftImg"
-            >
-		</div>
+        <router-link to="/songing">
+            <div class="ft-left">
+                <img 
+                    :src="pbhash.imgUrl?pbhash.imgUrl.replace(/{size}/,''):''" 
+                    onerror="this.onerror=null;this.src='http://m.kugou.com/v3/static/images/index/logo_kugou.png';" 
+                    alt="" 
+                    class="js-ftImg" 
+                    id="ftImg"
+                >
+            </div>
+        </router-link>
         <div class="ft-center">
             <p class="ft-desc js-ftSongName" id="ftSongName">{{pbhash.songName}}</p>
             <p class="ft-sub-desc js-ftUserName" id="ftUserName">{{pbhash.singerName}}</p>
@@ -27,8 +29,14 @@
                 @click="fn"
             ></mu-icon>
             {{listOff}}
-            <audio ref="au" autoplay :src="pbhash.url"/>
+            <audio 
+                ref="au" 
+                autoplay 
+                :src="pbhash.url"
+                @timeupdate="tup"
+            />
         </div>
+        {{pbhash}}
     </div>
 </template>
 <script>
@@ -41,21 +49,28 @@ export default {
             num:true
         }
     },
+    mounted(){
+        this.$store.commit('createEl',this.$refs.au)
+    },
     methods:{
+        tup(ev){
+            this.$store.commit('addCurrentT',ev.target.currentTime);
+        },
         fn(){
             if(!this.num){
                 this.$refs.au.play();
             }else{
                 this.$refs.au.pause();
             }
+            this.$store.commit('cgPbsetoff',this.num);
             this.num = !this.num;
         }
     },
     computed:{
         ...mapState(['pbhash']),
         onOff(){
-            let {pbonoff} = this.$store.state;
-            if(!pbonoff){
+            let {pbonoff,pbsetoff} = this.$store.state;
+            if(!pbonoff && !pbsetoff){
                 setTimeout(()=>{
                     this.$refs.au.pause();    
                 });

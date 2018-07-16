@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        
+        问题：
+            事件频繁被触发，因而频繁执行DOM操作、
+            资源加载等重行为，导致UI停顿甚至浏览器崩溃。
+
+        函数节流:
+            当事件触发的时候，执行事件函数，函数触发之后
+            关闭上次定时器，再开一个定时器，当事件不触发的时候
+            就会调用定时器中的代码
+
+        缺点:
+            事件中的过程监控不到了。
+
+    */
+    let timer = null;
+    document.onmousemove = function(ev){
+        clearTimeout(timer);
+        timer = setTimeout(function(){
+            console.log(ev.clientX);
+        },500);
+    }
+</script>
+</body>
+</html>

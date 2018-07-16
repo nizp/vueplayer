@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        call,apply,bind 都是函数自身带的方法
+
+        call,apply 的区别，主要是参数
+
+        都能改变this的指向
+
+        用了就执行
+            call:无限参数
+                1：this
+                2..... 实参
+            apply:2个
+                1:this
+                2.数组
+
+            bind -> 用了不直接调用，手动调用
+    */
+
+    function fn(a,b,c){
+        console.log(this,a,b,c);
+    }
+    // fn.call(document,1,2,3)
+    // fn.apply(document,[1,2,3])
+    // fn.bind(document)(4,5,6);
+
+    let f = fn.bind(document);
+    f(4,5,6);
+</script>
+</body>
+</html>

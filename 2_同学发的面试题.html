@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        闭包:
+            函数套函数，子函数能够访问父函数的变量或者参数，父函数的变量或者参数
+            不会被浏览器垃圾回收机制回收
+
+            打印父函数的时候，会显示closure（闭包）属性
+
+            index,想让函数内部的参数、变量不被垃圾回收机制回收
+
+            obj.onclick = null;
+
+        作用域链:
+            传参、变量或者参数的使用
+
+            当去访问某个变量的时候，它的结果到底属于谁？
+
+
+    */
+    // function f(){
+    //     let a = 10;
+    //     return function(){
+    //         a++;
+    //         console.log(a);
+    //     }
+    // } 
+    // let fn = f();
+
+    // console.dir(fn);
+
+
+    // for(var i=0;i<10;i++){
+    //     (function(i){
+    //         setTimeout(function(){
+    //             console.log(i);
+    //         });
+    //     })(i)
+    // }
+
+    // for(let i=0;i<10;i++){
+    //     setTimeout(function(){
+    //         console.log(i);
+    //     });
+    // }
+
+    // var a = 10;
+    // function fn(a){
+    //     alert(a); //undefined  10
+    //     let b = 20;
+    //     alert(a); //undefined
+    //     a = 5;
+    //     var a;
+    //     alert(a); //5
+    // }
+    // fn(a); 
+    // alert(a); //10
+
+    // var a = 10;
+    // function fn(a){
+    //     alert(a);  //fn a
+    //     let b = 20;
+    //     alert(a);  //fn a
+    //     function a(a,b){
+    //         alert(a);
+    //         return c;
+    //     }
+    //     var c = a;
+    //     return a;
+    //     a = 5;  
+    //     var a;
+    //     alert(a);
+        
+    // }
+    // fn(a); 
+    // let f = fn(a);
+    // fn()();
+    // f(); 
+    // alert(a); //10
+
+
+
+
+
+</script>
+</body>
+</html>

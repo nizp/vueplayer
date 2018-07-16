@@ -56,14 +56,14 @@ export default {
 
 <style>
 .d{
-    padding-top:4.5rem; 
+    padding-top:7.5rem; 
 }
 #info .mu-card-media{
 
 }
 #info .demo-loadmore-wrap {
   width: 100%;
-  height:40.3rem;
+  height:100vh;
   display: flex;
   flex-direction: column;
 }

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+<script>
+    /*
+        for( of )
+
+        for of
+
+        只要有Iterator就能使用for of循环
+
+        done是个布尔值
+            如果是true，停止循环，反之false
+
+    */
+    // let arr = [1,2,3,4];
+    let lis = document.querySelectorAll('li');
+
+    let obj = {
+        name:'肾肾',
+        age:888
+    }
+
+    // obj[Symbol.iterator] = function(){
+    //     let index = -1;
+    //     let val = Object.keys(obj);
+    //     // console.log(val);
+    //         return {
+    //             next(){
+    //                 if(index < val.length-1){
+    //                     return {
+    //                         value:{
+    //                             val:obj[val[++index]],
+    //                             key:val[index]
+    //                         },
+    //                         done:false
+    //                     }
+    //                 }else{
+    //                     return {
+    //                         value:null,
+    //                         done:true
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+
+    // // console.dir(lis);
+
+
+
+    Object.prototype[Symbol.iterator] = function(){
+        let index = -1;
+        let keys = Object.keys(this);
+        return {
+            next:()=>{
+                if(index < keys.length - 1){
+                    return {
+                        value:{
+                            val:this[keys[++index]],
+                            key:keys[index]
+                        },
+                        done:false
+                    } 
+                }else{
+                    return {value:null,done:true}
+                }
+            }
+        }
+    }
+
+
+    for(let {key,val} of obj){
+        console.log(key,val)
+    }
+
+    // for(let val of lis.values()){
+    //     console.log(val);
+    // }
+
+    // for(let [key,val] of arr.entries()){
+    //     console.log(key,val);
+    // }   
+
+
+    function* fn(){
+        yield 'hello';
+        yield 'world';
+        return 'ending';
+        yield '小贝';
+    }
+
+    let f = fn();
+
+    console.log(f.next().value);
+    console.log(f.next().value);
+    console.log(f.next().value);
+    console.log(f.next().value);
+
+
+
+</script>
+</body>
+</html>

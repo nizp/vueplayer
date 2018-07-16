@@ -10,10 +10,21 @@ export default new Vuex.Store({
       banner:[],
       list:[]
     },
-    pbonoff:false,
-    pbhash:{}
+    pbonoff:false, //控制显示或者隐藏
+    pbhash:{},
+    pbsetoff:false, //是否播放
+    val:0,  //拖拽的value
+    currentTime:0,
+    el:null
+
   },
   mutations: {
+    createEl(state,el){
+      state.el = el;
+    },
+    addCurrentT(state,num){
+      state.currentTime = num;
+    },
     addList(state,data){
       // console.log(data)
       state.indexData.list.push(...data);
@@ -25,8 +36,16 @@ export default new Vuex.Store({
       state.pbonoff = true;
       state.pbhash = data;
     },
-    pboff(state){
+    cgPbsetoff(state,b){
+      state.pbsetoff = b;
+    },
+    pboff(state,of){
+      state.pbsetoff = !!of;
       state.pbonoff = false;
+    },
+    //获取拖拽的value值
+    addVal(state,val){
+      state.val = val;
     }
   },
   getters:{
